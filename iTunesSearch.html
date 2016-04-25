@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="iTunesSearchApp">
+<head>
+    <meta charset="UTF-8">
+    <title>iTunes Search App</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+
+    <div ng-controller="iTunesSearchCtrl">
+        <input type="text" ng-model="searchTerm">
+        <button class="btn" ng-click="searchItunes()">
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+        <button class="btn" ng-click="clear()">
+            <i class="glyphicon glyphicon-refresh"></i> Clear
+        </button>
+
+        <table class="table table-bordered" ng-show="itunes.show">
+            <tr>
+                <th></th>
+                <th>Album</th>
+                <th>Song</th>
+                <th>Price</th>
+            </tr>
+            <tr ng-repeat="song in itResult.results">
+                <td><img src={{song.artworkUrl30}}></td>
+                <td>{{song.collectionName}}</td>
+                <td><a href={{song.trackViewUrl}}>{{song.trackName}}</a></td>
+                <td>{{song.trackPrice}}</td>
+            </tr>
+        </table>
+    </div>
+    <!-- JS files Start-->
+    <script src="js/angular.min.js " type="text/javascript "> </script>
+    <script src="js/angular-resource.min.js" type="text/javascript"> </script>
+    <script src="js/iTunesSearchCtrl.js" type="text/javascript" > </script>
+    <!-- JS files End-->
+</body>
+</html>
